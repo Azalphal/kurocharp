@@ -13,15 +13,16 @@ setInterval(() => {
 const discord = require('discord.js');
 const client = new discord.Client();
 const moment = require('moment');
+const logger = require("./core/util/logger");
 
 client.on('ready', () => {
-    console.log(`
+    logger.success(`
         Bot ready. Currently in:
         ${client.channels.size} Channels,
         ${client.guilds.size} Servers,
         With a ${client.users.size} total user.
         `);
-  client.user.setGame('UNICORNS!');
+  client.user.setGame('IM A MORON!');
 });
 
 const prefix = ">";
