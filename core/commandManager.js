@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const config = require("../config");
 const logger = require("./util/logger");
-const { error, toUpper } = require("./Util/Util");
+const { error, toUpper } = require("./util/util");
 const { Collection, RichEmbed, Client } = require("discord.js");
 
 module.exports = class CommandManager {
