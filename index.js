@@ -31,3 +31,5 @@ client.on('ready', () => {
       message.channel.send(`Pong! \`${Date.now() - message.createdTimestamp} ms\``);
     }
 });
+
+client.login(config.token);
