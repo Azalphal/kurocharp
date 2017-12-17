@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const config = require("../config");
-const Logger = require("./util/logger");
+const logger = require("./util/logger");
 const { error, toUpper } = require("./Util/Util");
 const { Collection, RichEmbed, Client } = require("discord.js");
 
@@ -42,11 +42,11 @@ module.exports = class CommandManager {
 
         if (instance.disabled) return;
         if (this.commands.has(commandName)) {
-            Logger.error("Start Module", `"${commandName}" already exists!`);
+            logger.error("Start Module", `"${commandName}" already exists!`);
             throw new Error("Commands cannot have the same name");
         }
 
-        Logger.info(`${re ? "Reloaded" : "Loaded"} Command`, toUpper(commandName));
+        logger.info(`${re ? "Reloaded" : "Loaded"} Command`, toUpper(commandName));
         this.commands.set(commandName, instance);
 
         for (const alias of instance.aliases) {
@@ -71,7 +71,7 @@ module.exports = class CommandManager {
 
     runCommand(command, message, channel, user, args) {
         try {
-            Logger.warn("Command Parser", `Matched ${command.name}, Running...`);
+            logger.warn("Command Parser", `Matched ${command.name}, Running...`);
             return command.run(message, channel, user, args);
         } catch(err) {
             return error("Command", err);
@@ -132,7 +132,7 @@ module.exports = class CommandManager {
         if (command.admin && !config.admin.includes(user.id)) return false;
 
         // Log Message
-        Logger.warn("Chat Log", `<${user.username}#${user.discriminator}>: ${text}`);
+        logger.warn("Chat Log", `<${user.username}#${user.discriminator}>: ${text}`);
 
         // Run Command
         return this.runCommand(command, message, channel, user, args);
