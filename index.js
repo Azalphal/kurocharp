@@ -20,7 +20,8 @@ client.on('ready', () => {
         ${client.channels.size} Channels,
         ${client.guilds.size} Servers,
         With a ${client.users.size} total user.
-        `)
+        `);
+  client.user.setGame('UNICORNS!');
 });
 
 const prefix = ">";
