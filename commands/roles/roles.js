@@ -25,5 +25,5 @@ class roleCommand extends Command {
             });
         }
     }
-};
+}
 module.exports = roleCommand;

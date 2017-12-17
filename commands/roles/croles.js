@@ -1,4 +1,4 @@
-const Command = require('discord.js');
+const Command = require("../../core/command");
 
 class croleCommand extends Command {
     constructor(client) {
@@ -26,5 +26,5 @@ class croleCommand extends Command {
             });
         }
     }
-};
+}
 module.exports = croleCommand;
