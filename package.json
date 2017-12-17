@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Bouyou34/mbot"
+    "url": "git+https://github.com/Bouyou34/moronbot"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Bouyou34/mbot/issues"
+    "url": "https://github.com/Bouyou34/moronbot/issues"
   },
-  "homepage": "https://github.com/Bouyou34/mbot#readme",
+  "homepage": "https://github.com/Bouyou34/moronbot#readme",
   "dependencies": {
     "chalk": "^2.3.0",
     "discord.js": "^11.2.1",
