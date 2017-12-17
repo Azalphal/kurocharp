@@ -47,4 +47,4 @@ client.on("messageUpdate", (old, _new) => {
 
 module.exports = client;
 
-client.login("MzkxODg3NTQ5MDkxNTQ1MDk4.DRfWjA.ptgemIuC9szs-51H2_8QMYGqeus");
+client.login(process.env.TOKEN);
