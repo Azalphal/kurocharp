@@ -1,0 +1,22 @@
+{
+  "name": "moronbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bouyou34/moronbot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bouyou34/moronbot/issues"
+  },
+  "homepage": "https://github.com/Bouyou34/moronbot#readme",
+  "dependencies": {
+    "discord.js": "^11.2.1"
+  }
+}
