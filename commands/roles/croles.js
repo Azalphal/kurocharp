@@ -1,4 +1,5 @@
 const Command = require("../../core/command");
+const toLower = require("./util/util");
 
 class croleCommand extends Command {
     constructor(client) {
@@ -17,7 +18,7 @@ class croleCommand extends Command {
         const clears = args;
         console.log(args)
         var clearlist = ['red', 'green', 'yellow', 'blue', 'pink', 'purple', 'orange']
-        if (clearlist.indexOf(clears.toLowerCase()) > -1) {
+        if (clearlist.indexOf(clears.toLower()) > -1) {
             message.guild.roles.forEach(role => {
                 if (role.name == clears) {
                     message.member.removeRole(role).catch(console.error);

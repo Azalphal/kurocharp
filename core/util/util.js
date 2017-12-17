@@ -11,6 +11,10 @@ class util {
     static toUpper(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
+    
+    static toLower(string) {
+        return string.charAt(0).toLowerCase() + string.slice(1);
+    }
 
     static error(name,message,channel) {
         const embed = new RichEmbed()

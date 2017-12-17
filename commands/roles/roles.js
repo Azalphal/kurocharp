@@ -1,4 +1,5 @@
 const Command = require("../../core/command");
+const toLower = require("./util/util");
 
 class roleCommand extends Command {
     constructor(client) {
@@ -13,10 +14,11 @@ class roleCommand extends Command {
             message.delete();
             return;
         }
+        
         const roles = args;
         console.log(args)
         var SAroles = ['red', 'green', 'yellow', 'blue', 'pink', 'purple', 'orange']
-        if (SAroles.indexOf(roles.toLowerCase()) > -1) {
+        if (SAroles.indexOf(roles.toLower()) > -1) {
             message.guild.roles.forEach(role => {
                 if (role.name == roles.toLowerCase()) {
                     message.member.addRole(role).catch(console.error);
