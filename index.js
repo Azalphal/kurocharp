@@ -13,6 +13,7 @@ setInterval(() => {
 const discord = require('discord.js');
 const client = new discord.Client();
 const settings = require('./settings.json');
+const express = require('express');
 
 client.on('ready', () => {
     console.log(`

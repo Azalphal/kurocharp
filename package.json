@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Bouyou34/moronbot#readme",
   "dependencies": {
-    "discord.js": "^11.2.1"
+    "discord.js": "^11.2.1",
+    "express": "^4.16.2"
   }
 }
