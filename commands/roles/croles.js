@@ -1,5 +1,5 @@
 const Command = require("../../core/command");
-const toLower = require("./util/util");
+const toLower = require("../../core/util/util");
 
 class croleCommand extends Command {
     constructor(client) {
@@ -11,13 +11,13 @@ class croleCommand extends Command {
     }
     async run(message, args) {
         if (message.channel.id !== "391873430229745664") {
-            messahe.delete();
+            message.delete();
             return;
         }
 
         const clears = args;
         console.log(args)
-        var clearlist = ['red', 'green', 'yellow', 'blue', 'pink', 'purple', 'orange']
+        var clearlist = ['red', 'green', 'yellow', 'blue', 'pink', 'purple', 'orange', 'male', 'female']
         if (clearlist.indexOf(clears.toLower()) > -1) {
             message.guild.roles.forEach(role => {
                 if (role.name == clears) {
