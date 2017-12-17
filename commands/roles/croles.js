@@ -10,14 +10,14 @@ class croleCommand extends Command {
         });
     }
     async run(message, args) {
-        if (message.channel.id !== "391873430229745664") {
+        if (message.channel.id !== "392046551179984896") {
             message.delete();
             return;
         }
 
         const clears = args;
         console.log(args)
-        var clearlist = ['red', 'green', 'yellow', 'blue', 'pink', 'purple', 'orange', 'male', 'female']
+        var clearlist = new clearlist['red', 'green', 'yellow', 'blue', 'pink', 'purple', 'orange', 'male', 'female']
         if (clearlist.indexOf(clears.toLower()) > -1) {
             message.guild.roles.forEach(role => {
                 if (role.name == clears) {
