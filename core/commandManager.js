@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const config = require("../config");
-const Logger = require("./Util/Logger");
+const Logger = require("./util/logger");
 const { error, toUpper } = require("./Util/Util");
 const { Collection, RichEmbed, Client } = require("discord.js");
 
