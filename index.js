@@ -21,11 +21,11 @@ client.on('ready', () => {
         ${client.guilds.size} Servers,
         With a ${client.users.size} total user.
         `)
-  });
+});
 
-  const prefix = ">";
-  client.on("message", (message) => {
-    if (!message.content.indexOf(prefix) !== 0 || message.author.bot) return;
+const prefix = ">";
+client.on("message", (message) => {
+    if (!message.content.startsWith(prefix) || message.author.bot) return;
   
     if (message.content.startsWith(prefix + "ping")) {
       message.channel.send(`Pong! \`${Date.now() - message.createdTimestamp} ms\``);
