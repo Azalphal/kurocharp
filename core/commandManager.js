@@ -155,19 +155,7 @@ module.exports = class CommandManager {
 
         const id = guild.id;
         const owners = this.getAdministrators(guild);
-
-        /*let db = await Database.Models.Config.findOne({ where: { id } });
-
-        if (!db) {
-            db = await Database.Models.Config.create({ id, owners, prefix: "/", disabled: false, permissions: "" });
-        }
-
-        if (!db.owners || db.owners === "") {
-            db = await db.update({ owners });
-        }*/
-
-        const prefix = db.prefix || config.prefix;
-        const disabled = db.disabled || false;
-        return { prefix, disabled };
+        const prefix = config.prefix;
+        return { prefix };
     };
 };

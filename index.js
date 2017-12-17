@@ -30,6 +30,9 @@ client.on('ready', () => {
         ${client.guilds.size} Servers,
         With a ${client.users.size} total user.
         `);
+});
+
+client.on('ready', () => {
   client.user.setGame('IM A MORON!');
 });
 
@@ -43,4 +46,5 @@ client.on("messageUpdate", (old, _new) => {
 });
 
 module.exports = client;
-client.login(process.env.TOKEN);
+
+client.login("MzkxODg3NTQ5MDkxNTQ1MDk4.DRfWjA.ptgemIuC9szs-51H2_8QMYGqeus");
