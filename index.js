@@ -12,8 +12,6 @@ setInterval(() => {
 
 const discord = require('discord.js');
 const client = new discord.Client();
-const settings = require('./settings.json');
-const express = require('express');
 const moment = require('moment');
 
 client.on('ready', () => {
