@@ -2,7 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const config = require("../config");
 const Logger = require("./Util/Logger");
-const Database = require("./Database");
 const { error, toUpper } = require("./Util/Util");
 const { Collection, RichEmbed, Client } = require("discord.js");
 
@@ -82,10 +81,10 @@ module.exports = class CommandManager {
     findCommand(mentioned, args) {
         const commandName = mentioned && args.length > 0
             ? args.splice(0, 2)[1].toLowerCase()
-            : args.splice(0, 1)[0].slice(config.sign.length).toLowerCase();
+            : args.splice(0, 1)[0].slice(config.prefix.length).toLowerCase();
         const command = this.commands.get(commandName) || this.aliases.get(commandName);
         return { command, commandName };
-    }
+    };
 
     async handleMessage(message) {
         // Don't Parse Bot Messages
@@ -104,24 +103,6 @@ module.exports = class CommandManager {
         const pattern = new RegExp(`<@!?${this.client.user.id}>`, "i");
         const mentioned = message.isMentioned(this.client.user) && pattern.test(args[0]);
         const triggered = message.content.startsWith(prefix);
-        const matched = new RegExp(blacklist.join("|")).test(message.content);
-
-        // Perform Various Checks
-        if (server !== "DM" && matched) return this.handleBlacklist(message);
-        this.giveCoins(user);
-        if (text.length < 1 && !attachments) return false;
-        if (attachments) text += attachments && text.length < 1 ? "<file>" : " <file>";
-        if (!triggered && !mentioned) return false;
-
-        // Bot was mentioned but no command supplied, await command
-        if (mentioned && args.length === 1) {
-            await message.reply("How may I help? Respond with the command you want to use. Expires in 60s");
-            const filter = msg => msg.author.id === user.id;
-            const res = await channel.awaitMessages(filter, { max: 1, time: 60000 });
-            message = res.first();
-            text += ` ${message.content}`;
-            args = [args[0], ...message.content.split(" ")];
-        }
 
         // Find Command
         const instance = this.findCommand(mentioned, args);
@@ -144,17 +125,6 @@ module.exports = class CommandManager {
             }
         }
 
-        // Mentioned but command doesn't exist
-        if (!command && mentioned && args.length >= 0) {
-            // Easter Egg for certain users
-            if (user.id === "169842543410937856" || user.id === "268963316200767488") {
-                return message.reply("I'm not sure what you mean... but please don't drink me!");
-            }
-
-            // Generic response for less awesome users
-            return message.reply("Sorry, I don't understand... Try `help` to see what I know!");
-        }
-
         // Command doesn't exist
         if (!command) return false;
 
@@ -168,29 +138,6 @@ module.exports = class CommandManager {
         return this.runCommand(command, message, channel, user, args);
     }
 
-    async handleBlacklist(message) {
-        if (message.guild) {
-            if (!message.guild.me.permissions.has("MANAGE_MESSAGES")) {
-                return false;
-            }
-        }
-
-        const guild = message.guild ? message.guild.name : "DM";
-        const embed = new RichEmbed()
-            .setDescription("Your message was removed because it contains a word that has been blacklisted.")
-            .addField("Offence", "Blacklisted Word")
-            .addField("Action", "Message Removed")
-            .addField("Message", message.content);
-
-        try {
-            Logger.info("Blacklist", `Deleting ${message.id} from ${guild}`);
-            await message.delete();
-            return message.author.send({ embed });
-        } catch(err) {
-            return error("Blacklist", `Unable to delete message ${message.id} from ${guild}`);
-        }
-    }
-
     getAdministrators(guild) {
         let owners = "";
 
@@ -201,15 +148,15 @@ module.exports = class CommandManager {
         }
 
         return owners;
-    }
+    };
 
     async handleServer(guild) {
-        if (!guild) return { prefix: config.sign };
+        if (!guild) return { prefix: config.prefix };
 
         const id = guild.id;
         const owners = this.getAdministrators(guild);
 
-        let db = await Database.Models.Config.findOne({ where: { id } });
+        /*let db = await Database.Models.Config.findOne({ where: { id } });
 
         if (!db) {
             db = await Database.Models.Config.create({ id, owners, prefix: "/", disabled: false, permissions: "" });
@@ -217,21 +164,10 @@ module.exports = class CommandManager {
 
         if (!db.owners || db.owners === "") {
             db = await db.update({ owners });
-        }
+        }*/
 
-        const prefix = db.prefix || config.sign;
+        const prefix = db.prefix || config.prefix;
         const disabled = db.disabled || false;
         return { prefix, disabled };
-    }
-
-    async giveCoins(user) {
-        const db = Database.Models.Bank;
-        const person = await db.findOne({ where: { id: user.id } });
-
-        if (person) {
-            return person.update({ balance: person.balance + 1 });
-        } else {
-            return db.create({ id: user.id, balance: 1 });
-        }
-    }
+    };
 };

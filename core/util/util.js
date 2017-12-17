@@ -1,5 +1,5 @@
 const client = require("../../index");
-const Logger = require("./Logger");
+const logger = require("./logger");
 const { RichEmbed } = require("discord.js");
 const config = require("../../config")
 
