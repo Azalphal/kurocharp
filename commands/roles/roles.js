@@ -1,6 +1,6 @@
 const Command = require("../../core/command");
 
-class role extends Command {
+class roleCommand extends Command {
     constructor(client) {
         super(client, {
             name: "role",
