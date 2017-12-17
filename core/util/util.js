@@ -1,7 +1,7 @@
 const client = require("../../index");
 const Logger = require("./Logger");
 const { RichEmbed } = require("discord.js");
-const settings = require("../../psettings")
+const config = require("../../config")
 
 class util {
     constructor() { 
@@ -14,6 +14,20 @@ class util {
 
     static error(name,message,channel) {
         const embed = new RichEmbed()
-            .setColor(settings.colours.error)
+            .setColor(config.colors.error)
+            .addField("Module", name, true)
+            .addField("Time", logger.time(), true)
+            .addField("Message", message);
+
+        channel = channel || null;
+        logger.error(name, message);
+
+        if (channel) channel.send({embed });
+        return false;
     }
 }
+
+process.on("uncaughtException", error => 
+    logger.error("Uncaught Exception", error, true));
+
+module.exports = util;

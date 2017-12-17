@@ -10,10 +10,16 @@ setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
 }, 280000);
 
+//Initialiser le core
 const discord = require('discord.js');
+const { error } = require("./core/util/util");
+const config = require("./config.js");
+const logger = require("./core/util/logger");
+
+//Initialiser le Discord bot de base
 const client = new discord.Client();
 const moment = require('moment');
-const logger = require("./core/util/logger");
+
 
 client.on('ready', () => {
     logger.success(`
