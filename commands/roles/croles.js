@@ -10,7 +10,7 @@ class croleCommand extends Command {
     }
     async run(message, args) {
         if (message.channel.id !== "391873430229745664") {
-            msg.delete();
+            messahe.delete();
             return;
         }
 

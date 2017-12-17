@@ -1,4 +1,4 @@
-const Command = require("../../core/Command");
+const Command = require("../../core/command");
 const config = require("../../config.js");
 const { RichEmbed } = require("discord.js");
 

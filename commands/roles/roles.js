@@ -10,7 +10,7 @@ class roleCommand extends Command {
 
     async run(message, channel, user, args) {
         if (message.channel.id !== "391873430229745664") {
-            msg.delete();
+            message.delete();
             return;
         }
         const roles = args;
