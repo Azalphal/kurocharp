@@ -20,7 +20,7 @@ class croleCommand extends Command {
         const clears = args;
         console.log(clears, `${message.author.username} ran crole command in ${channel.name} to clear role`, clears)
         message.delete(`${message.author.username} ran crole command in ${channel.name}`);
-        message.member.removeRole(message.guild.roles.find("name", clears[0]))
+        message.member.removeRole(message.guild.roles.find("name", clears[0].toLowerCase()))
         /*if (clearlist.indexOf(clears.toLower()) > -1) {
             message.guild.roles.forEach(role => {
                 if (role.name == clears) {

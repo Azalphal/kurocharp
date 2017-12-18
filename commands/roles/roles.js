@@ -20,7 +20,7 @@ class roleCommand extends Command {
         const roles = args;
         console.log(roles, `${message.author.username} ran role command in ${channel.name} to get role`, roles)
         message.delete(`${message.author.username} ran role command in ${channel.name}`);
-        message.member.addRole(message.guild.roles.find("name", roles[0]))
+        message.member.addRole(message.guild.roles.find("name", roles[0].toLowerCase()))
     }
 }
 module.exports = roleCommand;
