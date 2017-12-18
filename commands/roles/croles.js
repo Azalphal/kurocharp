@@ -17,7 +17,7 @@ class croleCommand extends Command {
 
         const clears = args;
         console.log(args)
-        var clearlist = new clearlist['red', 'green', 'yellow', 'blue', 'pink', 'purple', 'orange', 'male', 'female']
+        var clearlist = new clearlist['red', 'green', 'yellow', 'blue', 'pink', 'purple', 'orange', 'Gamer', 'Role Play', 'Not Looking', 'Single', 'Taken', 'Male', 'Female', 'Trans', 'Bisexual', 'Straight', '15-17', '10-14']
         if (clearlist.indexOf(clears.toLower()) > -1) {
             message.guild.roles.forEach(role => {
                 if (role.name == clears) {
