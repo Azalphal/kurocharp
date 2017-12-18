@@ -16,11 +16,17 @@ class roleCommand extends Command {
             console.log(args);
             return;
         }
-        var SAroles = ['red', 'green', 'yellow', 'blue', 'pink', 'purple', 'orange', 'Gamer', 'Role Play', 'Not Looking', 'Taken', 'Single', 'Male', 'Female', 'Trans', 'Bisexual', 'Straight', '15-17', '10-14'];
+        var SAroles = ['red', 'green', 'yellow', 'blue', 'pink', 'purple', 'orange', 'gamer', 'role play', 'not looking', 'taken', 'single', 'male', 'female', 'trans', 'bisexual', 'straight', '15-17', '10-14'];
         const roles = args;
+        let rroles = roles[0].toLowerCase();
         console.log(roles, `${message.author.username} ran role command in ${channel.name} to get role`, roles)
         message.delete(`${message.author.username} ran role command in ${channel.name}`);
-        message.member.addRole(message.guild.roles.find("name", roles[0].toLowerCase()))
+        if (!SAroles.includes(rroles));
+        try {
+            message.member.addRole(message.guild.roles.find("name", rroles));
+        } catch(error) {
+            return;
+        };
     }
 }
 module.exports = roleCommand;
