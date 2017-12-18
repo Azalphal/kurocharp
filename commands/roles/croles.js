@@ -9,7 +9,7 @@ class croleCommand extends Command {
         });
     }
     async run(message, channel, user, args) {
-        if (message.channel.id !== "392046551179984896") {
+        if (message.channel.id !== "392418727532036107") {
             console.log(`${message.author.username} tried to run crole command in ${channel.name} but failed.`);
             message.delete();
             console.log(args);
