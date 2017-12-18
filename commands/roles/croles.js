@@ -18,9 +18,15 @@ class croleCommand extends Command {
 
         var clearlist = new clearlist['red', 'green', 'yellow', 'blue', 'pink', 'purple', 'orange', 'Gamer', 'Role Play', 'Not Looking', 'Taken', 'Single', 'Male', 'Female', 'Trans', 'Bisexual', 'Straight', '15-17', '10-14'];
         const clears = args;
+        var cclears = clears[0].toLowerCase();
         console.log(clears, `${message.author.username} ran crole command in ${channel.name} to clear role`, clears)
         message.delete(`${message.author.username} ran crole command in ${channel.name}`);
-        message.member.removeRole(message.guild.roles.find("name", clears[0].toLowerCase()))
+        if (!clearlist.includes(cclears));
+        try {
+            message.member.removeRole(message.guild.roles.find("name", cclears));
+        } catch(error) {
+            return;
+        };
     }
 }
 module.exports = croleCommand;
