@@ -17,7 +17,7 @@ class roleCommand extends Command {
             console.log(args);
             return;
         }
-        var SAroles = ['red', 'green', 'yellow', 'blue', 'pink', 'purple', 'orange', 'male', 'female', 'trans'];
+        var SAroles = ['red', 'green', 'yellow', 'blue', 'pink', 'purple', 'orange', 'Gamer', 'Role Play', 'Not Looking', 'Taken', 'Single', 'Male', 'Female', 'Trans', 'Bisexual', 'Straight', '15-17', '10-14'];
         const roles = args;
         console.log(roles, `${message.author.username} ran role command in ${channel.name} to get role`, roles)
         message.delete(`${message.author.username} ran role command in ${channel.name}`);
