@@ -1,5 +1,4 @@
 const Command = require("../../core/command");
-const toLower = require("../../core/util/util");
 
 class roleCommand extends Command {
     constructor(client) {
