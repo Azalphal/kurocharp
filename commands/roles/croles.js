@@ -16,7 +16,7 @@ class croleCommand extends Command {
             return;
         }
 
-        var clearlist = new clearlist['red', 'green', 'yellow', 'blue', 'pink', 'purple', 'orange', 'gamer', 'role play', 'not looking', 'taken', 'single', 'male', 'female', 'trans', 'bisexual', 'straight', '15-17', '10-14'];
+        var clearlist = ['red', 'green', 'yellow', 'blue', 'pink', 'purple', 'orange', 'gamer', 'role play', 'not looking', 'taken', 'single', 'male', 'female', 'trans', 'bisexual', 'straight', '15-17', '10-14'];
         const clears = args;
         var cclears = clears[0].toLowerCase();
         console.log(clears, `${message.author.username} ran crole command in ${channel.name} to clear role`, clears)
