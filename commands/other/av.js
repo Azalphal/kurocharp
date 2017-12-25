@@ -1,4 +1,5 @@
 const Command = require("../../core/command");
+const config = require("../../config");
 
 class av extends Command {
     constructor(client) {
