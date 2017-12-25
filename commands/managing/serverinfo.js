@@ -9,38 +9,37 @@ class ServerInfo extends Command {
             aliases: ["server", "info"]
         })
     }
-}
 
-run(msg) {
-    msg.channel.send({embed: {
+run(message) {
+    message.channel.send({embed: {
         color: 3447003,
-        description: `Info on **${msg.guild.name}** (ID: ${msg.guild.id})`,
+        description: `Info on **${message.guild.name}** (ID: ${message.guild.id})`,
         fields: [{
             name: '-=- Channels',
-            value: stripIndents`
-                • ${msg.guild.channels.filter(ch => ch.type === 'text').size} Text, ${msg.guild.channels.filter(ch => ch.type === 'voice').size} Voice
-                • Default: ${msg.guild.defaultChannel}
-                • AFK: ${msg.guild.afkChannelID ? `<#${msg.guild.afkChannelID}> after ${msg.guild.afkTimeout / 60}min` : 'None.'}
+            value: `
+                • ${message.guild.channels.filter(ch => ch.type === 'text').size} Text, ${message.guild.channels.filter(ch => ch.type === 'voice').size} Voice
+                • Default: ${message.guild.defaultChannel}
+                • AFK: ${message.guild.afkChannelID ? `<#${message.guild.afkChannelID}> after ${message.guild.afkTimeout / 60}min` : 'None.'}
             `,
         },
         {
             name: '-=- Member',
-            value: stripIndents`
-                • ${msg.guild.memberCount} members
-                • Owner: ${msg.guild.owner.user.username}#${msg.guild.owner.user.discriminator}
+            value: `
+                • ${message.guild.memberCount} members
+                • Owner: ${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}
             `,
         },
         {
             name: '-=- Other',
-            value: stripIndents`
+            value: `
 
-                • Region: ${msg.guild.region}
-                • Created at: ${moment.utc(msg.guild.createdAt).format('dddd, MMMM Do YYYY, HH:mm:ss ZZ')}
+                • Region: ${message.guild.region}
+                • Created at: ${moment.utc(message.guild.createdAt).format('dddd, MMMM Do YYYY, HH:mm:ss ZZ')}
             `
         }
         ],
         timestamp: new Date(),
-        thumbnail: { url: msg.guild.iconURL }
+        thumbnail: { url: message.guild.iconURL }
     }});
-}
+}}
 module.exports = ServerInfo;
