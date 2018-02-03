@@ -32,7 +32,7 @@ class Help extends Command {
                 return `**${command.name}** — ${command.description}\nMatches: ${aliases.map(alias => `\`${alias}\``).join(", ")}\n`;
             });
 
-            text.unshift(`Type \`${config.sign}<command>\` to use a command.\n`);
+            text.unshift(`Type \`${config.prefix}<command>\` to use a command.\n`);
             text.unshift("__**List of available commands**__\n");
 
             if (channel.type !== "dm") await message.reply("Sent you a DM with information!");
@@ -46,7 +46,7 @@ class Help extends Command {
         const embed = new RichEmbed()
             .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.displayAvatarURL)
             .setThumbnail(this.client.user.displayAvatarURL)
-            .addField("Usage", `\`${config.sign}${command.name.toLowerCase()}\``, true)
+            .addField("Usage", `\`${config.prefix}${command.name.toLowerCase()}\``, true)
             .addField("Aliases", [command.name, ...command.aliases].map(name => name.toLowerCase()).join(", "), true)
             .addField("Description", command.description);
 

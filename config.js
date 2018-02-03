@@ -1,6 +1,12 @@
-module.exports = {
-    prefix: ">",
-    admin: ["117240261381193734"],
+const config = {
+    ownerID: ["397489422851112972"],
+
+    "defaultSettings" : {
+        "prefix": ">",
+        //"modLogChannel": "mod-log",
+        //"modRole": "Moderator",
+        //"adminRole": "Administrator",
+    },
 
     colors: {
         default: 0xbababa,
