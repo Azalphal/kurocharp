@@ -1,12 +1,6 @@
 const config = {
     ownerID: ["397489422851112972"],
-
-    "defaultSettings" : {
-        "prefix": ">",
-        //"modLogChannel": "mod-log",
-        //"modRole": "Moderator",
-        //"adminRole": "Administrator",
-    },
+    prefix: ">",
 
     colors: {
         default: 0xbababa,
