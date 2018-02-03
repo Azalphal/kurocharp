@@ -81,7 +81,7 @@ module.exports = class CommandManager {
     findCommand(mentioned, args) {
         const commandName = mentioned && args.length > 0
             ? args.splice(0, 2)[1].toLowerCase()
-            : args.splice(0, 1)[0].slice(config.prefix.length).toLowerCase();
+            : args.splice(0, 1)[0].slice(config.prefix).toLowerCase();
         const command = this.commands.get(commandName) || this.aliases.get(commandName);
         return { command, commandName };
     };
@@ -91,7 +91,7 @@ module.exports = class CommandManager {
         if (message.author.bot) return false;
 
         // Handle Server Configuration
-        const { prefix } = await this.handleServer(message.guild);
+        const { prefix } = config.prefix;
 
         // Create Helper Variables
         let text = message.cleanContent;
@@ -148,14 +148,5 @@ module.exports = class CommandManager {
         }
 
         return owners;
-    };
-
-    async handleServer(guild) {
-        if (!guild) return { prefix: config.prefix };
-
-        const id = guild.id;
-        const owners = this.getAdministrators(guild);
-        const prefix = config.prefix;
-        return { prefix };
     };
 };

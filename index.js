@@ -33,7 +33,7 @@ client.on('ready', () => {
 });
 
 client.on('ready', () => {
-  client.user.setGame('IM A MORON!');
+  client.user.setGame('Im so badass ;^)');
 });
 
 Manager.loadCommands("./commands/");
