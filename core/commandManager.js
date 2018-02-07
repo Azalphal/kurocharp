@@ -81,7 +81,7 @@ module.exports = class CommandManager {
     findCommand(mentioned, args) {
         const commandName = mentioned && args.length > 0
             ? args.splice(0, 2)[1].toLowerCase()
-            : args.splice(0, 1)[0].slice(config.prefix).toLowerCase();
+            : args.splice(0, 1)[0].slice(config.prefix.length).toLowerCase();
         const command = this.commands.get(commandName) || this.aliases.get(commandName);
         return { command, commandName };
     };
@@ -89,9 +89,6 @@ module.exports = class CommandManager {
     async handleMessage(message) {
         // Don't Parse Bot Messages
         if (message.author.bot) return false;
-
-        // Handle Server Configuration
-        const { prefix } = config.prefix;
 
         // Create Helper Variables
         let text = message.cleanContent;
@@ -102,7 +99,7 @@ module.exports = class CommandManager {
         const attachments = message.attachments.size > 0;
         const pattern = new RegExp(`<@!?${this.client.user.id}>`, "i");
         const mentioned = message.isMentioned(this.client.user) && pattern.test(args[0]);
-        const triggered = message.content.startsWith(prefix);
+        const triggered = message.content.startsWith(config.prefix);
 
         // Find Command
         const instance = this.findCommand(mentioned, args);

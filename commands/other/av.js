@@ -10,12 +10,8 @@ class av extends Command {
         });
     }
 
-    async run (client, channel, message) {
-        message.channel.send(message.author.avatarURL);
+    async run (client, message) {
+        message.send(client.author.avatarURL);
     }
-    /*async run(client, message) {
-        let target = message.mention.users.size === 0 ? message.author : message.guild.member(message.mentions.users.first()).user;
-        message.channel.send(target.avatarURL);
-    }*/
 }
 module.exports = av;
