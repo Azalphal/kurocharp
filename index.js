@@ -24,16 +24,13 @@ const Manager = new commandManager(client);
 
 
 client.on('ready', () => {
+    client.user.setActivity("Im so badass ;^)");
     logger.success(`
         Bot ready. Currently in:
         ${client.channels.size} Channels,
         ${client.guilds.size} Servers,
         With a ${client.users.size} total user.
         `);
-});
-
-client.on('ready', () => {
-  client.user.setGame('Im so badass ;^)');
 });
 
 Manager.loadCommands("./commands/");
