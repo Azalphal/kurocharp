@@ -90,7 +90,9 @@ module.exports = class CommandManager {
         // Don't Parse Bot Messages
         if (message.author.bot) return false;
 
-        const { prefix } = config.prefix
+        const prefix = config.prefix
+
+        if (!message.content.startsWith(prefix)) return; 
 
         // Create Helper Variables
         let text = message.cleanContent;
@@ -101,7 +103,6 @@ module.exports = class CommandManager {
         const attachments = message.attachments.size > 0;
         const pattern = new RegExp(`<@!?${this.client.user.id}>`, "i");
         const mentioned = message.isMentioned(this.client.user) && pattern.test(args[0]);
-        const triggered = message.content.startsWith(prefix);
 
         // Find Command
         const instance = this.findCommand(mentioned, args);
