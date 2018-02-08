@@ -1,6 +1,6 @@
 module.exports = {
     ownerID: ["397489422851112972"],
-    prefix: ">",
+    prefix: '>',
 
     colors: {
         default: 0xbababa,
