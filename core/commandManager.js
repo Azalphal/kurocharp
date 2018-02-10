@@ -87,7 +87,7 @@ module.exports = class CommandManager {
     };
 
     async handleMessage(message) {
-        // Don't Parse Bot Messages
+        // Ignore Bot Messages
         if (message.author.bot) return false;
 
         const prefix = config.prefix
